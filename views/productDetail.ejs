@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %> 
+
+<body>
+    <%- include('partials/header.ejs') %> 
+
+    <div class="detail-page">
+
+        <div class="container products-wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="products-title">Detalle del producto: <%= product.name %> </h2>
+                </div>
+                <div>
+                    <div class="col-12">
+                        <section class="product-box row">
+                            <section class="product-box_image col-12 col-lg-8">
+                                <img src="/images/<%- product.image %> " alt="">
+                                <p class="description col-12">
+                                    <%= product.description %> 
+                                </p>
+                            </section>
+                            <article class="detalle col-12 col-lg-4">
+                                    <h2><%=product.name%></h2>
+                                    <% if (product.discount > 0) { %>
+                                        <span class="tachado">$<%=toThousand(product.price)%></span><SPAN>/ <%=product.discount%>% OFF</span>
+                                        <% } %>
+                                    <h3>$<%=toThousand(product.price - Math.round(product.price/ 100 * product.discount))%></h3>
+                                    <div class="mensajes">
+                                        <div class="tarjeta"><i class="fas fa-credit-card"></i><p>Pagá en 12 cuotas sin interés.</p></div>
+                                        <div class="tarjeta"><i class="fas fa-store"></i><p>Retiro gratis en locales del vendedor.</p></div>
+                                        
+                                    </div>
+                                    <button>COMPRAR AHORA</button>
+                                    
+                                </article>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <%- include('partials/footer.ejs') %> 
+
+</body>
+</html>
